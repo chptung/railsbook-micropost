@@ -21,6 +21,16 @@
     <%= form.number_field :user_id, id: :micropost_user_id %>
   </div>
 
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, ['not_published'] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publish_at %>
+    <%= form.datetime_field :publish_at, id: :micropost_publish_at %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
