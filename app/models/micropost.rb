@@ -2,14 +2,11 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   validates :content, length: { maximum: 140 }, presence: true
 
-  #def set_defaults
-  #  if !self.publish_at
-  #  self.status  ||= 'published'
-  #    self.publish_at  ||= Time.now
-  #  else
-  #    self.status  ||= 'not_published'
+  after_initialize :set_defaults, unless: :persisted?
+  def set_defaults
+    self.publish_at  ||= Time.now
   #  self.bool_field = true if self.bool_field.nil?
-  # end
+  end
 
   # Every post has
   #  status - either PUBLISH_WAITING or PUBLISHED
